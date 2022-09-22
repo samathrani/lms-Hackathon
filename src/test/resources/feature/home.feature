@@ -3,8 +3,9 @@ Feature: Title
   I want to use this template for my feature file
   
  Background: The User logs in to the home page
- Given User is on the browser
- When User landed on the Home page after logging into the LMS website
+ Given User is in login page
+ When The user gets the valid data from the datasheet with "<testId>" and "<sheetName>"
+ Then User landed on the Home page after logging into the LMS website
  
  
   @test
