@@ -14,6 +14,7 @@ public WebDriver driver = Hooks.driver;
 	WebElement username;
 	@FindBy(xpath = "//*[@id='password']")
 	WebElement password;
-	
+	@FindBy(xpath = "//*[@id='login']/span[1]")
+	WebElement login;
 	
 }
