@@ -1,21 +1,37 @@
-@tag
-Feature: Title of your feature
+@test
+Feature: Title 
   I want to use this template for my feature file
-
-  @tag1
-  Scenario: Title of your scenario
-    Given I want to write a step with precondition
-    When 
-    Then 
+  
+ Background: The User logs in to the home page
+ Given User is on the browser
+ When User landed on the Home page after logging into the LMS website
+ 
+ 
+  @test
+  Scenario: Verify that the title of the Home page is LMS
+  Then User should see a heading with text "LMS - Learning Management System" on the Home page
     
-    
-  @tag2
-  Scenario Outline: Title of your scenario outline
-    Given I want to write a step with <name>
-    When I check for the <value> in step
-    Then I verify the <status> in step
+  @test
+  Scenario:
+  Then User should see a button with text "Program" on the menu bar
+  
+  @test
+  Scenario:
+  Then User should see a button with text "Batch" on the menu bar
+  
+  @test
+  Scenario:
+  Then User should see a button with text "User" on the menu bar
+  
+  @test
+  Scenario:
+  Then User should see a button with text "Assignment" on the menu bar
+  
+  @test
+  Scenario:
+  Then User should see a button with text "Attendance" on the menu bar
+  
+  @test
+  Scenario:
+  Then User should see a button with text "Logout" on the menu bar
 
-    Examples: 
-      | name  | value | status  |
-      | name1 |     5 | success |
-      | name2 |     7 | Fail    |

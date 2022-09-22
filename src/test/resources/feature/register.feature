@@ -1,9 +1,12 @@
 Feature: Title of your feature
   I want to use this template for my feature file
+  
+ Background: The User is on the browser
+ Given User is on the browser
 
   @tag1
   Scenario: Title of your scenario
-    Given 
+
     When 
     Then 
   
