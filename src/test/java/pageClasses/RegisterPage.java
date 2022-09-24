@@ -114,6 +114,27 @@ public void city () {
 	
 	city.sendKeys(config.getcity());
 	}
+public void registrationPage () {
+	
+}
+public void LoginPage () {
+	
+}
+public void invalidPhone () {
+	
+	}
+public void invalidemail () {
+	
+}
+public void invalidPassword () {
+	
+}
+public void existingUser () {
+	
+}
+public void birthDate () {
+	
+}
 public void state() {
 	
 	state.sendKeys(config.getstate());
