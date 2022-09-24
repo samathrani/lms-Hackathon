@@ -3,6 +3,8 @@ package utils;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import org.testng.annotations.Test;
+
 public class ConfigReader {
 	
 	Properties prop;
@@ -18,5 +20,88 @@ public class ConfigReader {
  			e.printStackTrace();
 		}
 	}
+	public String getfirstName() {
 
+		String  firstName= prop.getProperty("firstName");
+		return firstName ;
+	}
+	
+	public String getlastName() {
+
+		String lastName = prop.getProperty("lastName");
+		return lastName;
+	}
+	
+   public int getaddress() {
+
+		int address = Integer.parseInt(prop.getProperty("address"));
+		return address;
+	}
+	
+   public String getstreetName() {
+
+		String streetName = prop.getProperty("streetName");
+		return streetName;
+	}
+	
+   public String getcity() {
+
+		String city = prop.getProperty("city");
+		return city;
+	}
+   
+   public String getstate() {
+
+		String state = prop.getProperty("state");
+		return state;
+	}
+   public int getzip() {
+
+		int zip = Integer.parseInt(prop.getProperty("zip"));
+		return zip;
+   }
+   
+   public String getbirthDate() {
+
+		String birthDate = prop.getProperty("birthDate");
+		return birthDate;
+	}
+   public String getuserName() {
+
+		String userName = prop.getProperty("userName");
+		return userName;
+	}
+   public String getpassword() {
+
+		String password = prop.getProperty("password");
+		return password ;
+	}
+   
+   public int getphone() {
+
+		int phone = Integer.parseInt(prop.getProperty("phone"));
+		return phone;
+  }
+   public String getemail() {
+
+		String email = prop.getProperty("email");
+		return email;
+	}
+   
+   
+   @Test
+	public void readPropFiles() {
+	   getfirstName();
+		System.out.println("getbaseurl() is" + getfirstName());
+		getbirthDate();
+		System.out.println("getJobDescription() is" + getbirthDate());
+		getzip();
+		System.out.println("getJobDescription() is" + 	getzip());
+	} 
+   
+   
+   
+   
+   
+   
 }

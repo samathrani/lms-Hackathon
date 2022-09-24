@@ -20,17 +20,17 @@ public class HomePage {
 	WebElement login;
 	@FindBy(xpath = "//span[contains(text(),' LMS - Learning Management System ')]")
 	WebElement lmsTitle;
-	@FindBy(xpath = "/html/body/app-root/app-header/mat-toolbar/button[1]")
+	@FindBy(xpath = "//mat-toolbar//*[contains(text(),'Program')]")
 	WebElement program;
-	@FindBy(xpath = "/html/body/app-root/app-header/mat-toolbar/button[2]")
+	@FindBy(xpath = "//mat-toolbar//*[contains(text(),'Batch')]")
 	WebElement batch;
-	@FindBy(xpath = "/html/body/app-root/app-header/mat-toolbar/button[3]")
+	@FindBy(xpath = "//mat-toolbar//*[contains(text(),'User')]")
 	WebElement user  ;
-	@FindBy(xpath = "/html/body/app-root/app-header/mat-toolbar/button[4]")
+	@FindBy(xpath = "//mat-toolbar//*[contains(text(),'Assignment')]")
 	WebElement assignment;
-	@FindBy(xpath = "/html/body/app-root/app-header/mat-toolbar/button[5]")
+	@FindBy(xpath = "//mat-toolbar//*[contains(text(),'Attendance')]")
 	WebElement attendance;
-	@FindBy(xpath = "/html/body/app-root/app-header/mat-toolbar/button[6]")
+	@FindBy(xpath = "//mat-toolbar//*[contains(text(),'Logout')]")
 	WebElement logout;
 	
 	///html/body/app-root/app-header/mat-toolbar/button[1]
