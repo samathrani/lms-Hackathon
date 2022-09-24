@@ -1,5 +1,5 @@
-@test
-Feature: Title 
+@test002
+Feature: HomePage Functionality 
   I want to use this template for my feature file
   
  # @test
@@ -9,8 +9,8 @@ Feature: Title
  #When The user gets the valid data from the datasheet with "<testId>" and "<sheetName>"
 
 
-  @test
- Scenario Outline: Verify that the title of the Home page is LMS
+  @test002
+ Scenario Outline: Verify the heading of the Home page 
   Given User is in login page
   When The user gets the valid data from the datasheet with "<testId>" and "<sheetName>"
  Then User should see a heading with text "LMS - Learning Management System" on the Home page
@@ -18,7 +18,7 @@ Feature: Title
    |testId|sheetName|
    |    a |Sheet1   |
     
-  @test
+  @test002
   Scenario Outline: Verify the program button
   Given User is in login page
   When The user gets the valid data from the datasheet with "<testId>" and "<sheetName>"
@@ -27,7 +27,7 @@ Feature: Title
    |testId|sheetName|
    |    a |Sheet1   |
    
-  @test 
+  @test002
   Scenario Outline: Verify the Batch button
   Given User is in login page
   When The user gets the valid data from the datasheet with "<testId>" and "<sheetName>"
@@ -36,7 +36,7 @@ Feature: Title
    |testId|sheetName|
    |    a |Sheet1   |
    
-  @test
+  @test002
  Scenario Outline: Verify the User button
   Given User is in login page
   When The user gets the valid data from the datasheet with "<testId>" and "<sheetName>"
@@ -45,7 +45,7 @@ Feature: Title
    |testId|sheetName|
    |    a |Sheet1   |
    
-  @test
+  @test002
   Scenario Outline: Verify the Assignment button
   Given User is in login page
   When The user gets the valid data from the datasheet with "<testId>" and "<sheetName>"
@@ -54,7 +54,7 @@ Feature: Title
    |testId|sheetName|
    |    a |Sheet1   |
    
-  @test
+  @test002
   Scenario Outline: Verify the Attendance button
   Given User is in login page
   When The user gets the valid data from the datasheet with "<testId>" and "<sheetName>"
@@ -63,7 +63,7 @@ Feature: Title
    |testId|sheetName|
    |    a |Sheet1   |
    
-  @test
+  @test002
  Scenario Outline: Verify the Logout button
   Given User is in login page
  When The user gets the valid data from the datasheet with "<testId>" and "<sheetName>"
