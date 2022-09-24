@@ -45,7 +45,7 @@ public class Register {
 
 	@Given("User is on the Registeration Page")
 	public void user_is_on_the_registeration_page() {
-		
+		register.registrationPage();
 	 
 	}
 
@@ -56,12 +56,13 @@ public class Register {
 
 	@Then("User lands on the Log in page")
 	public void user_lands_on_the_log_in_page() {
-		
+register.LoginPage();
 		
 	}
 
 	@When("User clicks sign up button with all fields empty")
 	public void user_clicks_sign_up_button_with_all_fields_empty() {
+		register.signUp();
 	   
 	}
 
@@ -74,32 +75,36 @@ public class Register {
 
 	@When("User clicks sign up button with all mandatory fields empty")
 	public void user_clicks_sign_up_button_with_all_mandatory_fields_empty() {
-	   
+		register.signUp();
 	}
 
 	@When("User clicks sign up button with one of the mandatory fields empty")
 	public void user_clicks_sign_up_button_with_one_of_the_mandatory_fields_empty() {
-	 
+		register.firstName();
+		register.lastName();
+		register.signUp();
 	}
 
 	@When("User clicks Sign Up button with invalid phone")
 	public void user_clicks_sign_up_button_with_invalid_phone() {
+		register.invalidPhone();
+		
 	   
 	}
 
 	@When("User clicks Sign Up button with invalid email")
 	public void user_clicks_sign_up_button_with_invalid_email() {
-	 
+		register.invalidemail();
 	}
 
 	@When("User clicks Sign Up button with invalid Password")
 	public void user_clicks_sign_up_button_with_invalid_password() {
-	    
+		register.invalidPassword();
 	}
 
 	@When("USer clicks Sign Up button with existing User name")
 	public void u_ser_clicks_sign_up_button_with_existing_user_name() {
-	  
+		register.existingUser();
 	}
 
 	@Then("User should see the message {string}")
@@ -110,9 +115,20 @@ public class Register {
 
 	@When("User enters all Field value and click Sign Up button")
 	public void user_enters_all_field_value_and_click_sign_up_button() {
+		register.firstName();
+		register.lastName();
+		register.address();
+		register.streetName();
+		register.city();
+		register.state();
+		register.zip();
+		register.birthDate();
+		register.userName();
+		register.password();
+		register.phone();
+		register.email();
 		
-		
-	}
+		}
 		@Then("User should get successful message {string}")
 		public void user_should_get_successful_message(String successText) {
 			
