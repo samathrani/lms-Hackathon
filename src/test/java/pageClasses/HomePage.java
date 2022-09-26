@@ -53,7 +53,10 @@ public class HomePage {
 	public void clicklogin() {
 		login.click();
 		}	
-	
+	public void clicklogout() {
+		
+		logout.click();
+	}
 
 	public String LmsTitle (String LmsText) {
 
