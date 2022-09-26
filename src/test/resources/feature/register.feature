@@ -1,6 +1,6 @@
 @test001
 Feature: Register Functionality
-  I want to use this template for my feature file
+
   
  #Background: The User is on the browser
  #Given User is on the register page

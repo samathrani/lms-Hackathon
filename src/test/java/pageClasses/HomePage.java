@@ -53,6 +53,28 @@ public class HomePage {
 	public void clicklogin() {
 		login.click();
 		}	
+public void clickprogram() {
+		
+	program.click();
+	}
+public void clickbatch() {
+	
+	batch.click();
+}
+public void clickuser() {
+	
+	user.click();
+}
+public void clickassignment() {
+	
+	assignment.click();
+}
+public void clickattendance() {
+	
+	attendance.click();
+}
+
+	
 	public void clicklogout() {
 		
 		logout.click();
