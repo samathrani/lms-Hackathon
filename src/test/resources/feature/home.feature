@@ -73,3 +73,14 @@ Feature: HomePage Functionality
    |testId|sheetName|
    |    a |Sheet1   |
    
+   @test002
+ Scenario Outline: Verify the Logout button
+  Given The User is in home page after enters valid data from the datasheet with "<testId>" and "<sheetName>"
+ When The user clicks a logout button
+  Then The User should redirected to login page
+
+ Examples:
+  |testId|sheetName|
+   |    a |Sheet1   |
+   
+   
