@@ -74,7 +74,7 @@ System.out.println("Login page");
 	public void user_should_get_a_message(String warningText) {
 		//register.warningText(warningText);
 		  // assertEquals(warningText, "Please fill out the field above");
-		   System.out.println("Display error Message");
+		   System.out.println("Please fill out the fields above");
 		
 	}
 
@@ -116,7 +116,36 @@ System.out.println("Login page");
 	public void user_should_see_the_message(String warningText) {
 		//register.warningText(warningText);
 		 //  assertEquals(warningText, "Please fill out the field above");
-		   System.out.println("Display error Message");
+		   System.out.println("Please fill out the mandatory fields");
+	}
+
+	@Then("User should get a message as {string} for valid phone")
+	public void user_should_get_a_message_as_for_valid_phone(String InvalidPhone) {
+		//register.warningText(InvalidPhone);
+		 //  assertEquals(InvalidPhone, "Please fill out the field above");
+		   System.out.println("Please fill valid phone");
+	}
+
+	@Then("User should get a message as {string} for valid email")
+	public void user_should_get_a_message_as_for_valid_email(String InvalidEmail) {
+		//register.warningText(InvalidEmail);
+		 //  assertEquals(InvalidEmail, "Please fill out the field above");
+		   System.out.println("Please fill valid email");
+	}
+
+	@Then("User should get a message as {string} for valid password")
+	public void user_should_get_a_message_as_for_valid_password(String InvalidPassword) {
+		//register.warningText(InvalidPassword);
+		 //  assertEquals(InvalidPassword, "Please fill out the field above");
+		   System.out.println("Please fill valid Password");
+	}
+
+	@Then("User should see the message as {string} for valid username")
+	public void user_should_see_the_message_as_for_valid_username(String existingUser) {
+
+		//register.warningText(existingUser);
+		 //  assertEquals(existingUser, "Please fill out the field above");
+		   System.out.println("Username already exist");
 	}
 
 	@When("User enters all Field value and click Sign Up button")

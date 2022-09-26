@@ -87,7 +87,28 @@ public class ConfigReader {
 		String email = prop.getProperty("email");
 		return email;
 	}
-   
+   public String existinguserName() {
+
+		String userName = prop.getProperty("existinguserName");
+		return userName;
+	}
+  public String getinvalidpassword() {
+
+		String password = prop.getProperty("invalidpassword");
+		return password ;
+	}
+  
+  public int getinvalidphone() {
+
+		int phone = Integer.parseInt(prop.getProperty("invalidphone"));
+		return phone;
+ }
+  public String getinvalidemail() {
+
+		String email = prop.getProperty("invalidemail");
+		return email;
+	}
+  
    
    @Test
 	public void readPropFiles() {
