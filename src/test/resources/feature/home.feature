@@ -1,6 +1,6 @@
 @test002
 Feature: HomePage Functionality 
-  I want to use this template for my feature file
+ 
   
  # @test
  #Background: The User logs in to the home page
@@ -72,4 +72,68 @@ Feature: HomePage Functionality
  Examples:
    |testId|sheetName|
    |    a |Sheet1   |
+   
+     
+   
+      @test002
+ Scenario Outline: Verify the function of Program button
+  Given The User is in home page after enters valid data from the datasheet with "<testId>" and "<sheetName>"
+ When The user clicks a Program  button
+  Then The User should redirected to Program  page
+
+ Examples:
+  |testId|sheetName|
+   |    a |Sheet1   |
+   
+    @test002
+ Scenario Outline: Verify the function of Batch button
+  Given The User is in home page after enters valid data from the datasheet with "<testId>" and "<sheetName>"
+ When The user clicks a Batch button
+  Then The User should redirected to Batch page
+
+ Examples:
+  |testId|sheetName|
+   |    a |Sheet1   |
+   
+      @test002
+ Scenario Outline: Verify the function of User button
+  Given The User is in home page after enters valid data from the datasheet with "<testId>" and "<sheetName>"
+ When The user clicks a User button
+  Then The User should redirected to User page
+
+ Examples:
+  |testId|sheetName|
+   |    a |Sheet1   |
+   
+      @test002
+ Scenario Outline: Verify the function of Assignment button
+  Given The User is in home page after enters valid data from the datasheet with "<testId>" and "<sheetName>"
+ When The user clicks a Assignment button
+  Then The User should redirected to Assignment page
+
+ Examples:
+  |testId|sheetName|
+   |    a |Sheet1   |
+   
+      @test002
+ Scenario Outline: Verify the function of Attendance button
+  Given The User is in home page after enters valid data from the datasheet with "<testId>" and "<sheetName>"
+ When The user clicks a Attendance button
+  Then The User should redirected to Attendance page
+
+ Examples:
+  |testId|sheetName|
+   |    a |Sheet1   |
+   
+   
+   @test002
+ Scenario Outline: Verify the function of Logout button
+  Given The User is in home page after enters valid data from the datasheet with "<testId>" and "<sheetName>"
+ When The user clicks a logout button
+  Then The User should redirected to login page
+
+ Examples:
+  |testId|sheetName|
+   |    a |Sheet1   |
+   
    
