@@ -1,0 +1,17 @@
+
+
+
+
+
+
+
+
+
+Scenario: Validating the presence of input number arrows in postal code input field	
+Given: User is on "User details" window	
+When User clicks postal code input field	
+Then User should see the input Number arrows in the postal code input field
+
+
+
+

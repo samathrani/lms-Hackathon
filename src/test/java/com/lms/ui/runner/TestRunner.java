@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/java/features/user",  
+		features = "src/test/java/features/user/UserDetails.feature",  
 		glue={"stepDefinition"},
 		monochrome=true,
 		dryRun=false

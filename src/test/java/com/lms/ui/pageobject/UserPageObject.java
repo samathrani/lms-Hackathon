@@ -3,6 +3,7 @@ package com.lms.ui.pageobject;
 import java.net.URL;
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -92,8 +93,12 @@ public class UserPageObject {
 
 	@FindBy(xpath="//thead/tr//p-tableheadercheckbox")
 	WebElement checkBoxInHeader;
+	
+
 
 	public void enterLoginID() {
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofMillis(2000));
+        w.until(ExpectedConditions.visibilityOf(loginId));
 		loginId.sendKeys("lms");
 	}
 
@@ -174,12 +179,26 @@ public class UserPageObject {
 	}
 
 	public void clickAddNewUserButton() {
+		
 		locateAddNewUser.click();
 	}
+	
 	public boolean checkUserDetailsDialogBox() {
+		
 		return dialogBoxUserDetails.isDisplayed();
 	}
 
+	public boolean ischeckUserDetailsDialogBoxPresent() {
+	//	driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		boolean isPresent = false;
+		try {
+			isPresent = dialogBoxUserDetails.isDisplayed();
+		} catch (Exception e) {
+			isPresent = false;
+		}
+		return isPresent;
+	}
+	
 	public boolean checkTableHeader() {
 		System.out.println(tableHeader.getText());
 		return tableHeader.isDisplayed();
@@ -271,8 +290,15 @@ public class UserPageObject {
 	public void clickNoButtonOnAlertBox() {
 		noButtonInConfirmAlert.click();
 	}
-	public void clickYesButtonOnAlertBox() {
+	public void clickYesButtonOnAlertBox() throws Exception {
+		//WebElement element = new WebDriverWait(driver, Duration.ofSeconds(2000))
+		//		.until(ExpectedConditions.visibilityOf(yesButtonInConfirmAlert));
+		Thread.sleep(2000);
 		yesButtonInConfirmAlert.click();
+		
+	//	yesButtonInConfirmAlert.click();
 	}
+	
+	
 
 }

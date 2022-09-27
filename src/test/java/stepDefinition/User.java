@@ -13,14 +13,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterMethod;
 
 import com.lms.ui.factory.DriverFactory;
+import com.lms.ui.pageobject.UserDetailsPageObject;
 import com.lms.ui.pageobject.UserPageDeleteIconPageObject;
 import com.lms.ui.pageobject.UserPageObject;
 
-import io.cucumber.java.After;
-import io.cucumber.java.AfterAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -29,10 +28,17 @@ public class User {
 	static WebDriver driver;
 	static UserPageObject user;
 	static UserPageDeleteIconPageObject deleteuser;
+	static UserDetailsPageObject userDetails;
 	int noOfRecords=0;
 	int beforeDeleteCount=0;
 	int afterDeleteCount=0;
+	int previousCount=0;
+	int afterCount=0;
 
+	@AfterMethod
+	public void closeDriver() {
+		driver.quit();
+	}
 
 	@Given("User is on any page after Login")
 	public void user_is_on_any_page_after_login() {
@@ -42,10 +48,11 @@ public class User {
 		driver = dr.initialiseDriver();
 		user= new UserPageObject(driver);
 		deleteuser= new UserPageDeleteIconPageObject(driver);
+
 		user.enterLoginID();
 		user.enterLoginPassword();
 		user.clickLogin();
-	
+
 	}
 
 	@When("User clicks the Tab {string}")
@@ -60,7 +67,7 @@ public class User {
 		String originaltext	= user.assertUserPage();
 		Assert.assertEquals(originaltext, "Manage User");
 	}
-	
+
 	public void initialize() {
 		DriverFactory dr = new DriverFactory();
 		driver = dr.initialiseDriver();
@@ -68,16 +75,17 @@ public class User {
 		user.enterLoginID();
 		user.enterLoginPassword();
 		user.clickLogin();
+		userDetails = new UserDetailsPageObject(driver);
 	}
-	
+
 	//----------------
 
 	//Feature :Pagination
 	@When("User is on the Manage user page after clicking User Tab")
 	public void user_is_on_the_manage_user_page_after_clicking_user_tab() throws Exception {
-//		if(user == null) {
-//			initialize();
-//		}
+		//		if(user == null) {
+		//			initialize();
+		//		}`
 		//Thread.sleep(3000);
 		initialize();
 		user.clickUserTab();
@@ -133,7 +141,6 @@ public class User {
 
 	@Given("User table is displayed in manage user page")
 	public void user_table_is_displayed_in_manage_user_page() {
-		//driver.findElement(By.xpath("//button[@class='mat-focus-indicator mat-button mat-button-base'][2]")).click();
 		boolean isCheckDataTablePresent = user.checkDataTableIsPresent();
 		Assert.assertEquals(isCheckDataTablePresent, true);
 	}
@@ -267,7 +274,8 @@ public class User {
 		Assert.assertFalse(user.isAllCheckBoxesSelected());
 	}
 
-	//DeleteIcon
+	//----------------------DeleteIcon-------------------------------
+	//-----------------------------------------------------------------
 
 	@Then("User should see the delete icon at the top left corner of the user table")
 	public void user_should_see_the_delete_icon_at_the_top_left_corner_of_the_user_table() {
@@ -286,36 +294,36 @@ public class User {
 		boolean isDeleteIconDisabled = user.isDeleteIconIsDisabled();
 		Assert.assertTrue(isDeleteIconDisabled);
 	}
-//-------------
-	
+	//-------------
+
 	@Given("User checks the rows in user table")
 	public void user_checks_the_rows_in_user_table() throws InterruptedException {
-	
+
 		user.clickCheckBoxInHeader();
 	}
-	
+
 	@When("User clicks the delete icon at the top right corner of user table")
 	public void user_clicks_the_delete_icon_at_the_top_left_corner_of_user_table() throws InterruptedException {
 		user.clickDeleteIconOnRight();
 	}
-	
+
 	@Then("Confirm dialog box should be displayed with Text {string}")
 	public void confirm_dialog_box_should_be_displayed_with_text(String string) {
 		boolean value = user.checkConfirmAlertBoxPopUp();
 		Assert.assertTrue(value);
 	}
 
-	
-	
-//-------- 3rd
-	
+
+
+	//-------- 3rd
+
 	@Then("Delete icon at the top left corner of the user table enabled")
 	public void delete_icon_at_the_top_left_corner_of_the_user_table_enabled() {
 		Assert.assertTrue(user.isDeleteIconEnabled());
 	}
 
-	
-//NO button
+
+	//NO button
 	@When("User clicks button No")
 	public void user_clicks_button_no() {
 		beforeDeleteCount = user.listofItemsInDataTable().size();
@@ -324,26 +332,30 @@ public class User {
 
 	@Then("Selected rows should not be deleted and dialog box should be closed")
 	public void selected_rows_should_not_be_deleted_and_dialog_box_should_be_closed() {
-		 afterDeleteCount = user.listofItemsInDataTable().size();
+		afterDeleteCount = user.listofItemsInDataTable().size();
 		if(beforeDeleteCount==afterDeleteCount)
 			assertTrue(true);
 		else
 			assertTrue(false);
-		
+
 	}//
-	
+
 	//YEs button
-	
+
 	@Given("User is in confirm dialog box after clicking delete icon")
 	public void user_is_in_confirm_dialog_box_after_clicking_delete_icon() {
 		user.clickDeleteIconOnRight();
 	}
-	
+
 	@When("User clicks button Yes")
 	public void user_clicks_button_yes() {
-		user.clickYesButtonOnAlertBox();
+		try {
+			user.clickYesButtonOnAlertBox();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 
 	@Then("Selected rows should be deleted and popup should be shown with success message {string}")
 	public void selected_rows_should_be_deleted_and_popup_should_be_shown_with_success_message(String string) {
@@ -352,5 +364,147 @@ public class User {
 		else
 			assertFalse(false);
 	}
+
+
+	//******************************************************************************************
+	//*****************USER DETAILS ***************************************************************
+
+
+	@When("User clicks A Add new user button")
+	public void user_clicks_a_add_new_user_button() {
+		initialize();
+		user.clickUserTab();
+		user.clickAddNewUserButton();
+	}
+
+	@Then("User should see User details window with heading {string}")
+	public void user_should_see_user_details_window_with_heading(String string) throws Exception {
+		Thread.sleep(2000);
+		boolean isDisplayed = user.checkUserDetailsDialogBox();
+		Assert.assertTrue(isDisplayed);
+		Assert.assertTrue(userDetails.validateHeadingInUserDetailsAlert());
+	}
+
+	@Then("User should see a button with text Cancel in user details window")
+	public void user_should_see_a_button_with_text_cancel_in_user_details_window() throws Exception {
+		Thread.sleep(2000);
+		boolean isCancelButtonPresentInUserDetails = userDetails.isCancelButtonPresentInUserDetailsAlert();
+		Assert.assertTrue(isCancelButtonPresentInUserDetails);
+	}
+	///////
+	@When("User clicks A cancel button")
+	public void user_clicks_a_cancel_button() throws Exception {
+		Thread.sleep(2000);
+		userDetails.clickCancelButtonOnuserDetailsAlert();
+
+	}
+
+
+	// Scenario: Fucntionality of Cancel(x) icon 
+	@Then("User details window should be closed")
+	public void user_details_window_should_be_closed() throws InterruptedException {
+		Thread.sleep(2000);
+		boolean value = user.ischeckUserDetailsDialogBoxPresent();
+		Assert.assertFalse(value); 
+	}
+	////
+	@Then("User should see a cancel\\(x) in user details window")
+	public void user_should_see_a_cancel_x_in_user_details_window() {
+
+		boolean value = userDetails.isCloseButtonOnUserDetailsALertVisible();
+		Assert.assertTrue(value);
+	}
+	// Scenario: Fucntionality of Cancel(x) icon
+	@When("User clicks A cancel\\(X) icon")
+	public void user_clicks_a_cancel_x_icon() {
+		userDetails.clickCancelButtonOnuserDetailsAlert();
+	}
+
+
+
+	//Scenario: Verify the presence of Submit button in user detais window
+	@Then("User should see a button with text Submit in user details window")
+	public void user_should_see_a_button_with_text_submit_in_user_details_window() {
+		userDetails.isSubmitButtoninUserDetailsAlert();
+	}
+	
+	
+	@Then("User should see the input fields for {string},{string}, Last name\",\"Email adress\",\"Phone no\", \"Address\",\"City\", \"State\",\"Postal Code\".\"Program\",\"UG Program\",\"PG Program\",\"Skill\",\"Experience\",\"User Role\",Visa status\",{string},{string} corresponding to their labels")
+	public void user_should_see_the_input_fields_for_last_name_email_adress_phone_no_address_city_state_postal_code_program_ug_program_pg_program_skill_experience_user_role_visa_status_corresponding_to_their_labels(String string, String string2, String string3, String string4) throws Exception {
+		boolean validate = userDetails.validateInputElementsinUserDetailsDialogBox();
+		Assert.assertTrue(validate);
+	}
+
+	@Then("User should see the placeholders with Text")
+	public void user_should_see_the_placeholders_with_text() {
+		boolean validate = userDetails.validatePlaceHolderInUserDetailsBox();
+		Assert.assertTrue(validate);
+	}
+
+	@When("User clicks the drop down icon for state")
+	public void user_clicks_the_drop_down_icon_for_state() {
+		userDetails.clickDropDownState();
+	}
+
+	@Then("User should select from the drop down menu")
+	public void user_should_select_from_the_drop_down_menu() {
+		userDetails.isDropDownStateListVisible();
+	}
+
+	@When("User clicks the drop down icon for User Role")
+	public void user_clicks_the_drop_down_icon_for_user_role() {
+	userDetails.clickDropDownRoleList();
+	}
+	
+	@Then("User should select from the role drop down menu")
+	public void user_should_select_from_the_role_drop_down_menu() {
+		userDetails.isDropDownRoleListEnabled();
+	}
+	
+	@When("User clicks the button + Add CO, Apt, Suite, Unit")
+	public void user_clicks_the_button() {
+		userDetails.clickAddress2LinkInUserDetails();
+	}
+
+	@Then("User should see the input field with Label Address2")
+	public void user_should_see_the_input_field_with_label(String string) {
+		Assert.assertTrue(userDetails.isAddress2TextBoxInUserDetailsVisible());
+	}
+	
+	@Then("User should see the button with text {string}")
+	public void user_should_see_the_button_with_text(String string) {
+	userDetails.isAddress2TextBoxInUserDetailsVisible();
+	}
+	
+	@When("User clicks save button with all details empty")
+	public void user_clicks_save_button_with_all_details_empty() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@Then("User should see a message \"Mandatory Fields cannot be empty")
+	public void user_should_see_a_message_mandatory_fields_cannot_be_empty() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("User clicks Save button by entering all valid values in required fields")
+	public void user_clicks_save_button_by_entering_all_valid_values_in_required_fields() {
+		previousCount = user.findNoOfRecordsInDataTable(); 
+		userDetails.enterAllDetails();
+	}
+
+	@Then("New User Should be Saved.")
+	public void new_user_should_be_saved() {
+		 afterCount = user.findNoOfRecordsInDataTable();
+		 Assert.assertTrue(afterCount>beforeDeleteCount);
+	}
+
+	
+//	@AfterAll
+//	public static void before_or_afer_all() {
+//		driver.quit();
+//	}
+
 
 }
