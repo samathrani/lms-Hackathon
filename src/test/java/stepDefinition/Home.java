@@ -18,8 +18,7 @@ public class Home {
 	
 	@Given("User is in login page")
 	public void user_is_in_login_page() {
-		homepage= new HomePage(driver);
-	
+		homepage= new HomePage(driver);	
 	}
 
 	@When("The user gets the valid data from the datasheet with {string} and {string}")
@@ -85,55 +84,6 @@ public class Home {
 		homepage.enterusername(testId, sheetName);
 		homepage.enterpassword(testId, sheetName);
 		homepage.clicklogin();
-	}
-	@When("The user clicks a Program  button")
-	public void the_user_clicks_a_program_button() {
-		 homepage.clickprogram();
-	}
-
-	@Then("The User should redirected to Program  page")
-	public void the_user_should_redirected_to_program_page() {
-		System.out.println("User redirected to Program  page");
-	}
-
-	@When("The user clicks a Batch button")
-	public void the_user_clicks_a_batch_button() {
-		 homepage.clickbatch();
-	}
-
-	@Then("The User should redirected to Batch page")
-	public void the_user_should_redirected_to_batch_page() {
-		System.out.println("User redirected to Batch page");
-	}
-
-	@When("The user clicks a User button")
-	public void the_user_clicks_a_user_button() {
-		 homepage.clickuser();
-	}
-
-	@Then("The User should redirected to User page")
-	public void the_user_should_redirected_to_user_page() {
-		System.out.println("User redirected to User page ");
-	}
-
-	@When("The user clicks a Assignment button")
-	public void the_user_clicks_a_assignment_button() {
-		 homepage.clickassignment();
-	}
-
-	@Then("The User should redirected to Assignment page")
-	public void the_user_should_redirected_to_assignment_page() {
-		System.out.println("User redirected to Assignment page");
-	}
-
-	@When("The user clicks a Attendance button")
-	public void the_user_clicks_a_attendance_button() {
-		 homepage.clickattendance();
-	}
-
-	@Then("The User should redirected to Attendance page")
-	public void the_user_should_redirected_to_attendance_page() {
-		 System.out.println("User redirected to Attendance page");
 	}
 
 	@When("The user clicks a logout button")

@@ -46,35 +46,13 @@ public class HomePage {
 		username.sendKeys(signIn.GetUserName());
 		}
 	
-		public void enterpassword(String testId, String sheetName) {
+   public void enterpassword(String testId, String sheetName) {
 			signIn = new ExcelHandling(testId,sheetName);	
 		password.sendKeys(signIn.GetPassword()); }
 	
 	public void clicklogin() {
 		login.click();
 		}	
-public void clickprogram() {
-		
-	program.click();
-	}
-public void clickbatch() {
-	
-	batch.click();
-}
-public void clickuser() {
-	
-	user.click();
-}
-public void clickassignment() {
-	
-	assignment.click();
-}
-public void clickattendance() {
-	
-	attendance.click();
-}
-
-	
 	public void clicklogout() {
 		
 		logout.click();

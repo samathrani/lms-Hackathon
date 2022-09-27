@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 		
 		plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
 		glue =  "stepDefinition",
-		features = {"src/test/resources/feature"})
+		features = {"src/test/resources/feature/Program.feature"})
 		
 @Test
 

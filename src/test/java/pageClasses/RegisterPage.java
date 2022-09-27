@@ -85,29 +85,6 @@ ConfigReader config;
 		String Warning = warning.getText();
 		return Warning ;
 	}
-	
-	public String InvalidPhone (String InvalidPhone) {
-
-		String Warning = warning.getText();
-		return Warning ;
-	}
-	public String InvalidEmail (String InvalidEmail) {
-
-		String Warning = warning.getText();
-		return Warning ;
-	}
-	public String InvalidPassword (String InvalidPassword) {
-
-		String Warning = warning.getText();
-		return Warning ;
-	}
-	public String existingUser (String existingUser) {
-
-		String Warning = warning.getText();
-		return Warning ;
-	}
-	
-	
 	public String successText (String successText) {
 
 		String Success = success.getText();
@@ -144,23 +121,17 @@ public void LoginPage () {
 	
 }
 public void invalidPhone () {
-phone.sendKeys("config.getinvalidphone()");
+	
 	}
-
-
 public void invalidemail () {
-email.sendKeys(config.getinvalidemail());
+	
 }
-
 public void invalidPassword () {
-password.sendKeys(config.getinvalidpassword());
+	
 }
-
 public void existingUser () {
-	userName.sendKeys(config.existinguserName());
+	
 }
-
-
 public void birthDate () {
 	
 }
