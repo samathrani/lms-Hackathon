@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 		plugin = { "pretty", "html:target/cucumber-report.html",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" },
 
-		features = { "src/test/resources/feature" }, 
+		features = { "src/test/resources/feature/Program.feature" }, 
 		glue = { "stepDefinition" })
 
 public class ExtendReport extends AbstractTestNGCucumberTests{

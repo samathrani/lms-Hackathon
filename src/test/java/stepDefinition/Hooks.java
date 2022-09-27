@@ -28,7 +28,7 @@ Properties prop;
 	public void driversetup() throws IOException {
 		
 		prop = new Properties();
-		FileInputStream fs = new FileInputStream("/Users/ezhilvanan/eclipse-workspace/SDET/lms-Hackathon/src/test/resources/TestData/config.properties");
+		FileInputStream fs = new FileInputStream("/Users/prade/Documents/lms-Hackathon/src/test/resources/TestData/config.properties");
 		prop.load(fs);
 		String browsername = prop.getProperty("browser");
 		if (browsername.equals("chrome")) {
@@ -70,9 +70,8 @@ Properties prop;
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 		driver.close();
 	
 	}
 }
-
-
