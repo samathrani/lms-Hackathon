@@ -152,6 +152,7 @@ public class UserDetailsPageObject {
 		element.click();
 	}
 	
+	
 	public boolean isDropDownRoleListEnabled() {
 		WebElement element = new WebDriverWait(driver, Duration.ofSeconds(2000))
 				.until(ExpectedConditions.visibilityOf(dropDownRoleList));
