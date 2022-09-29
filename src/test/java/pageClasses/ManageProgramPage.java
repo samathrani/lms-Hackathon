@@ -211,28 +211,6 @@ public class ManageProgramPage {
 	public void deleteYes() {
 		delYes.click();
 	}
-	public void addNewPgm() {
-		addNewProgram.click();
-	}
-	public void addProgramEmptyFields() {
-		programDetailsName.sendKeys("");
-		programDetailsDescription.sendKeys("");
-	}
-	public void addNewPgmName() {
-		programDetailsName.sendKeys("SQL demo");
-	}
-	public void addNewPgmDesc() {
-		programDetailsDescription.sendKeys("SQL demo");
-	}
-	public void addNewPgmStatus() {
-		activeStatus.click();
-	}
-	public void cancelNewPgmDetails() {
-		programDetailsCancel.click();
-	}
-	public void saveNewPgmDetails() {
-		programDetailsSave.click();
-	}
 	public void selectMultiFeature() {
 		selectAllPrograms.click();
 
