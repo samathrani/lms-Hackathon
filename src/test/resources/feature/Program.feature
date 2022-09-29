@@ -132,133 +132,108 @@ Feature: ManageProgram
 
 #
  # @Add new program
-  #@tag21
-  #Scenario: Validate Add New Program
-    #Given User is on Program Details form
-    #When User clicks <A New Program> button
-    #Then User lands on Program Details form to add new program.
-#
-  #@tag22
-  #Scenario: Empty form submission
-    #Given User is on Program Details form
-    #When User clicks <Save> button without entering data
-    #Then User gets message 'Name is required'
-#
-  #@tag23
-  #Scenario: Enter Program Name
-    #Given User is on Program Details form
-    #When User enters <Name> in text box
-    #Then User can see 'Name' entered
-#
-  #@tag24
-  #Scenario: Enter Program Description
-    #Given User is on Program Details form
-    #When User enters <Description> in text box
-    #Then User can see 'Description' entered
-#
-  #@tag25
-  #Scenario: Select Status
-    #Given User is on Program Details form
-    #When User selects <Status> using radiobutton
-    #Then User can see 'Active/Inactive' status selected
-#
-  #@tag26
-  #Scenario: Click Save
-    #Given User is on Program Details form
-    #When User clicks <Save> button
-    #Then User can see 'Successful Program created' message
-#
-  #@tag27
-  #Scenario: Click Cancel
-    #Given User is on Program Details form
-    #When User clicks <Cancel> button
-    #Then User can see Program Details form disappears
-    
-    
-    
+ Feature: add new program
+  @tag21
+  Scenario: Validate Add New Program
+    Given User is on Program Details form to add new program after valid login with "<testId>" and "<sheetName>"
+    When User clicks "<A New Program>" button
+    Then User lands on Program Details form to add new program.
+
+  @tag22
+  Scenario: Empty form submission to add new program
+    Given User is on Program Details form for adding new program
+    When User clicks "<Save>" button without entering data
+    Then User gets message "Name is required."
+
+  @tag23
+  Scenario: Enter Program Name Description and Status and click "<Save>" to add new program
+    Given User is on Program Details form for adding new program 
+    When User enters "<Name>" "<Description>" and "<Status>" and clicks "<Save>" button
+    Then User can see "Successful Program created" message on screen
+       
 #Mutli Deletion
-  @tag28
+  @tag24
   Scenario: Select multiple Program
     Given User is on Program page
     When User selects more than one Program using checkbox
     Then Programs get selected
 
-  @tag29
+  @tag25
   Scenario: Delete Feature
     Given User is on Program page
     When User clicks on <Delete> button on top left corner
     Then User lands on Confirm Deletion form.
 
-  @tag30
+  @tag26
    Scenario: Click No for Program del
     Given User is on Confirm Del form for No
     When User clicks delete all <No> button
     Then User can see no programs gets deleted
 
-  @tag31
+  @tag27
    Scenario: Click Yes for Program del
     Given User is on Confirm Del form for Yes
     When User clicks delete all <Yes> button
     Then User can see  All Programs Deleted message
     
  # @Pagination
- # @tag32
+ # @tag28
   #Scenario: Verify previous link on the first page
     #Given User is logged on to LMS website
     #When User is on first page of Manage Program
     #Then Verify that previous link is disabled
 #
-  #@tag33
+  #@tag29
   #Scenario: Verify next link
     #Given User is on the page number '1'
     #When User clicks navigateRight > button
     #Then User navigated to page number '2'
 #
-  #@tag34
+  #@tag30
   #Scenario: Verify previous link
     #Given User is on the page number '2'
     #When User clicks navigateLeft < button
     #Then User navigated to page number '1'
 #
-  #@tag35
+  #@tag31
   #Scenario: Verify next link on the last page
     #Given User is logged on to LMS website
     #When User is on last page of Manage Program
     #Then Verify that next link is disabled
 #
   #@Results in ascending order
-  #@tag36
+  #@tag32
   #Scenario: Verify that the results are displayed in Ascending order of Program name
     #Given User is on the Program page
     #When User clicks on the Ascending arrow (down) near to the Program name
     #Then User can see the results in Ascending order of Program name
 #
-  #@tag37
+  #@tag33
   #Scenario: Verify that the results are displayed in Ascending order of Program description
     #Given User is on the Program page
     #When User clicks on the Ascending arrow (down) near to the Program Description
     #Then User can see the results in Ascending order of Program description
 #
-  #@tag38
+  #@tag34
   #Scenario: Verify that the results are displayed in Ascending order of Program status
     #Given User is on the Program page
     #When User clicks on the Ascending arrow (down)near to the Program status
     #Then User can see the results in Ascending order of Program status
 #
   #@Results in descending order
-  #@tag39
+  #@tag35
   #Scenario: Verify that the results are displayed in descending order of Program name
     #Given User is on the Program page
     #When User clicks on the descending arrow (down) near to the Program name
     #Then User can see the results in descending order of Program name
 #
-  #@tag40
+  #@tag36
   #Scenario: Verify that the results are displayed in descending order of Program description
     #Given User is on the Program page
     #When User clicks on the descending arrow (down) near to the Program Description
     #Then User can see the results in descending order of Program description
 #
-  #@tag41
+  #@tag37
   #Scenario: Verify that the results are displayed in descending order of Program status
     #Given User is on the Program page
     #When User clicks on the descending arrow (down)near to the Program status
