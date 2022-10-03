@@ -1,9 +1,13 @@
 package pageClasses;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import stepDefinition.Excelsheet;
@@ -61,6 +65,9 @@ public class ManageProgramPage {
 	@FindBy(xpath="//span[@class='p-dialog-header-close-icon ng-tns-c132-19 pi pi-times']") 
 	WebElement programDetailsClose;
 	//Delete Program
+	
+	@FindBy(xpath="//div//span[@class='p-button-icon pi pi-trash']") 
+	WebElement deleteFeaturePrograms;
 	@FindBy(xpath="//tbody/tr//span[@class='p-button-icon pi pi-trash']") 
 	WebElement deleteFeature;
 	@FindBy(xpath="//*[contains(text(),'Yes') ]") 
@@ -78,10 +85,12 @@ public class ManageProgramPage {
 	WebElement deleteAllPrograms;
 	@FindBy(xpath="//span[@class='p-paginator-current ng-star-inserted']")
 	WebElement footerDetails;
+	@FindBy(xpath="//small[@class='p-invalid ng-star-inserted']")
+	WebElement nameIsRequiredMsg;
 	//pagination
-	@FindBy(xpath="//span[@class='p-paginator-icon pi pi-angle-left']")
+	@FindBy(xpath="//button[@class='p-paginator-prev p-paginator-element p-link p-disabled p-ripple']")
 	WebElement paginationLeft;
-	@FindBy(xpath="//span[@class='p-paginator-icon pi pi-angle-right']") 
+	@FindBy(xpath="//button[@class='p-paginator-next p-paginator-element p-link p-disabled p-ripple']") 
 	WebElement paginationRight;
 
 
@@ -123,11 +132,11 @@ public class ManageProgramPage {
 		return totalEntries;
 	}	
 	public void disabledDelButton(){
-		if(deleteFeature.isEnabled()) {
-			System.out.print("Delete Button should be disabled");
+		if(deleteFeaturePrograms.isEnabled()) {
+			System.out.println("Delete Button disabled");
 		}
 		else {
-			System.out.println("Delete button under Manage Program is disabled");
+			System.out.println("Delete button enabled");
 		}		
 	}
 	public void NoOfRowsInTable() {
@@ -211,11 +220,32 @@ public class ManageProgramPage {
 	public void deleteYes() {
 		delYes.click();
 	}
+	public void addNewPgm() {
+		addNewProgram.click();
+	}
+	public void addProgramEmptyFields() {
+		programDetailsName.sendKeys("");
+		programDetailsDescription.sendKeys("");
+	}
+	public void addNewPgmName() {
+		programDetailsName.sendKeys("SQL demo");
+	}
+	public void addNewPgmDesc() {
+		programDetailsDescription.sendKeys("SQL demo");
+	}
+	public void addNewPgmStatus() {
+		activeStatus.click();
+	}
+	public void cancelNewPgmDetails() {
+		programDetailsCancel.click();
+	}
+	public void saveNewPgmDetails() {
+		programDetailsSave.click();
+	}
 	public void selectMultiFeature() {
 		selectAllPrograms.click();
 
 	}
-
 	public void deleteMultiFeature() {
 		deleteAllPrograms.click();
 	}
@@ -228,18 +258,46 @@ public class ManageProgramPage {
 	public void confirmDeleteCloseBtn() {
 		confirmDeleteClose.click();
 	}
+	//Add new program
+	
+	public  void clickAddNewProgramBtn() {	
+		addNewProgram.click();	
+
+	}
+	public void clickSavewithEmptyFiledValues() {	
+		programDetailsSave.click();
+		
+	}
+	public String nameIsRequiredMsg(String displayinfo) {
+		String alertMsg=nameIsRequiredMsg.getText();
+		return alertMsg;
+	}
+	public void addAllProgramDetailsSave(String s1,String s2, String s3,String s4) {	
+		programDetailsName.sendKeys("SDET");
+		programDetailsDescription.sendKeys("Testing demo");
+		activeStatus.click();
+		programDetailsSave.click();
+	}
+	public void cancelNewProgramDetails() {
+		addNewProgram.click();
+		programDetailsCancel.click();
+
+	}
+
 	//Pagination 
 	public void clickPagiLeft() {
-		if (paginationLeft.isEnabled()){
-			System.out.println("Pagination left arrow is enabled");	
-			paginationLeft.click();
-		}
-		else {
-			System.out.println("Pagination left arrow is disabled");
-		}
-	}
+
+			if(paginationLeft.isDisplayed() && paginationLeft.isEnabled()){
+				System.out.println("Pagination left arrow is clickable");	
+				paginationLeft.click();
+			}
+			else {
+				System.out.println("Pagination left arrow navigation disabled from page 1");
+				System.out.println("pass");
+			}
+		} 
 	public void clickPagiRight() {
-		if (paginationRight.isEnabled()){
+		if (paginationRight.isDisplayed() && paginationRight.isEnabled()){
 			System.out.println("Pagination Right arrow is enabled");
 			paginationRight.click();
 		}
@@ -247,7 +305,9 @@ public class ManageProgramPage {
 			System.out.println("Pagination Right arrow is disabled");
 		}
 	}
-	//Ascending order - table dada store in an array and verify order ASC code####
+	
+	
+	//Ascending order - table dada store in an array and verify order ASC code
 	public void nameAscOrder() {
 		programName.click();
 		/*for lop to read program names
