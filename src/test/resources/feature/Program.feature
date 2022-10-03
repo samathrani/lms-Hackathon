@@ -53,7 +53,7 @@ Feature: ManagePgm
     When User enters Status "<status phrase>" into search box.
     Then Entries for Status string are shown.
 
- #@Edit Program details
+ #Edit Program details
   @tag10
   Scenario: Select Program
     Given User is on Program page
@@ -96,7 +96,7 @@ Feature: ManagePgm
     When User clicks <Save> button
     Then User can see 'Successful Program Updated' message
 
- # @ Delete Program
+ # Delete Program
   @tag17
   Scenario: Select Program
     Given User is on Program page
@@ -121,7 +121,7 @@ Feature: ManagePgm
     When User clicks <Yes> button
     Then User can see 'Successful Program Deleted' message
 
- # @Add new program
+ # Add new program
   @tag21
   Scenario: Validate Add New Program
     Given User is on Program Details form to add new program after valid login with "<testId>" and "<sheetName>"
@@ -164,7 +164,7 @@ Feature: ManagePgm
     When User clicks delete all <Yes> button
     Then User can see  All Programs Deleted message
     
- # @Pagination
+ # Pagination
   @tag28
   Scenario: Verify previous link on the first page
     Given User is logged on to LMS website
@@ -189,7 +189,7 @@ Feature: ManagePgm
     When User is on last page of Manage Program
     Then Verify that next link is disabled
 
-  #@Results in ascending  descending order
+  #Results in ascending  descending order
   
   @tag32
   Scenario: Verify that the results are displayed in Ascending order of Program name
